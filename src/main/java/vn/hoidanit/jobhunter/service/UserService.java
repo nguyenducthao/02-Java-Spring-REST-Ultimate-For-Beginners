@@ -10,6 +10,7 @@ import vn.hoidanit.jobhunter.repository.UserRepository;
 
 @Service
 public class UserService {
+
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
@@ -46,5 +47,9 @@ public class UserService {
             currentUser = this.userRepository.save(currentUser);
         }
         return currentUser;
+    }
+
+    public User handleGetUserByUsername(String username) {
+        return this.userRepository.findByEmail(username);
     }
 }
